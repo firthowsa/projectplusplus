@@ -3,8 +3,9 @@ package models;
 public class TeamsCompetition {
 	
 	
-	 private int TeamId,CompetitionId,TeamsCompetitionId;
+	 private int TeamId,CompetitionId,TeamsCompetitionId,Point;
 	 private Student StudentNumber;
+	 private String Solution;
 	 
 	 public TeamsCompetition(
 			  int teamId,
@@ -17,15 +18,20 @@ public class TeamsCompetition {
 		 CompetitionId=competitionId;
 
 }
-	 public TeamsCompetition( int teamsCompetitionId,
+	 public TeamsCompetition( 
 			  int teamId,
-			  int competitionId
+			  int competitionId,
+			  String solution,
+			  int point
 			
           
 ) { 
-		 TeamsCompetitionId=teamsCompetitionId;
+		 
 		 TeamId=teamId;
 		 CompetitionId=competitionId;
+		 Solution=solution;
+		 Point=point;
+		 
 
 }
 
@@ -57,6 +63,18 @@ public class TeamsCompetition {
 	}
 	public void setStudentNumber(Student studentNumber) {
 		StudentNumber = studentNumber;
+	}
+	public int getPoint() {
+		return Point;
+	}
+	public void setPoint(int point) {
+		Point = point;
+	}
+	public String getSolution() {
+		return Solution;
+	}
+	public void setSolution(String solution) {
+		Solution = solution;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,9 @@ public class TeamsCompetitionDAO {
 	                		
 	                        resultSet.getInt("teamId"),
 	                                                                     
-	                        resultSet.getInt("competitionId")
+	                        resultSet.getInt("competitionId"),
+	                        resultSet.getString("solution"),
+	                        resultSet.getInt("point")
 	                );
 	            }
 	        } catch (SQLException e) {
@@ -43,7 +46,9 @@ public class TeamsCompetitionDAO {
 	            			
 	                        resultSet.getInt("teamId"),
 	                                              
-	                        resultSet.getInt("competitionId")
+	                        resultSet.getInt("competitionId"),
+	                        resultSet.getString("solution"),
+	                        resultSet.getInt("point")
 	                ));
 	            }
 	        } catch (SQLException e) {
@@ -88,6 +93,24 @@ public class TeamsCompetitionDAO {
 	    public static TeamsCompetition getparticipatingTeams(int competitionId) {
 	        return create(DatabaseAccess.executeQuery("select * from TeamsCompetition where competitionId = '"+competitionId+"'"));
 	        
+	    }
+	    public static void submitSolution(TeamsCompetition t) {
+	        String sql = "update TeamsCompetition set " +
+	                "solution = '"+t.getSolution()+"', " +
+	                
+	                
+	                " where competitionId = '"+t.getCompetitionId()+"'";
+	        DatabaseAccess.executeUpdate(sql);
+
+	    }
+	    public static void updatePoint(TeamsCompetition t) {
+	        String sql = "update TeamsCompetition set " +
+	                "solution = '"+t.getPoint()+"', " +
+	                
+	                
+	                " where competitionId = '"+t.getCompetitionId()+"'";
+	        DatabaseAccess.executeUpdate(sql);
+
 	    }
 	    
 	    

@@ -104,7 +104,7 @@ public class TeamDAO {
     }
     
     public static List<Team> getTeamsInCompetition(int competitionId) {
-        return createList(DatabaseAccess.executeQuery("SELECT team.* FROM `team` INNER join teammembers on team.TeamId = teammembers.teamId INNER JOIN teamscompetition ON teamscompetition.teamId= teammembers.teamId WHERE teamscompetition.competitionId = '"+competitionId+"'"));
+        return createList(DatabaseAccess.executeQuery("SELECT team.* FROM `team`INNER JOIN teamscompetition ON teamscompetition.teamId= team.teamId WHERE teamscompetition.competitionId = '"+competitionId+"'"));
         
     }
     

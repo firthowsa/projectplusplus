@@ -48,31 +48,42 @@
             <%
                 }
             %>
-
-  <nav class=" #fafafa grey lighten-5">
-    <div class="nav-wrapper">
-     <h4 class="title color-primary"><%=competition.getTitle() %></h4>
-      <form action="new-teams" method="post">
-                        <input name="competitionId" value="<%=competition.getCompetitionId()%>"hidden >
+            
+ <nav>
+    <div class="nav-wrapper #fafafa grey lighten-5"">
+      <a href="#" class="brand-logo"><h4 class="title color-primary"><%=competition.getTitle() %></h4></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        
+       <li>
+        <form action="new-teams" method="post">
+             <input name="competitionId" value="<%=competition.getCompetitionId()%>"hidden >
+             
                        <%
                        Student s = (Student) user;
                        		if(!competition.studentParticipating(s.getStudentNumber())) {
                        %> 
-                        <input type="submit" name="JoinCompetition" class=" right btn-small #e65100 orange darken-4 " value="Join Competition">
-                      <%
-                       		} %>
-       </form> 
+                        
+                        <input type="submit" name="JoinCompetition" class="btn #e65100 orange darken-4 " value="Join Competition">
+                       <%
+                       		}
+                       		
+                       %>
+        
       <% 
                if (competition.studentParticipating(s.getStudentNumber()) && competition.countTeamSummissions(s.getStudentNumber()) < 5) {
        %> 
-                      
-                       <input type="submit" name="SubmitSolution" class=" right btn-small #e65100 orange darken-4 " value="Submit Solution">
-                       <%
+                      <input name="competitionId" value="<%=competition.getCompetitionId()%>"hidden >
+                       <input type="submit" name="SubmitSolution" class="btn-small #e65100 orange darken-4 " value="Submit Solution">
+        <%
                        		}
-                       %>     
+        %> 
+         </form>   
+         </li>
+      </ul>
     </div>
   </nav>
 
+  
 
 
 <div class="p-2">
