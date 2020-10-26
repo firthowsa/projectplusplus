@@ -1,0 +1,125 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+body, html{
+    height: 100%;
+}
+
+*{
+    padding: 0px;
+    margin: 0;
+}
+.text{
+	width: 100%;
+	margin-top: 185px;
+	text-transform: uppercase;
+	text-align: center;
+	color:white;
+}
+
+.text h4{
+
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.text h1{
+	font-size:62px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700px;
+	margin:14px 0px;
+}
+
+.text h3{
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+#buttonone{
+	background-color: white;
+	border: none;
+	font-size: 12px;
+	font-weight: bold;
+	color:green;
+	text-transform: uppercase;
+	line-height: 40px;
+	width: 150px;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 25px;
+	border: 3px solid white;
+}
+
+.color-primary{
+    color: #003f72;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.index-main{
+    /* The image used */
+    background-image: url('assets/img/background.jpg');
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.index-main1{
+    /* The image used */
+    background-image: url('assets/img/decoders.jpg');
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-login{
+    max-width: 450px;
+}
+
+.mx-auto{
+    margin: 0 auto;
+}
+
+.mt-3 {
+    margin-top: 30px;
+}
+
+.p-2{
+    padding: 20px;
+}
+.alert{
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.w-100{
+    width: 100%;
+    text-align: center;
+}
+
+.d-none{
+    visibility: hidden ;
+    position: absolute;
+}
+.nav-icon{
+    height: 100%;
+    width: 50px;
+}
