@@ -123,3 +123,9 @@ body, html{
     height: 100%;
     width: 50px;
 }
+p {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

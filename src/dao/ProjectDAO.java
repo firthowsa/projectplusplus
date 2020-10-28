@@ -87,6 +87,10 @@ public class ProjectDAO {
 	 public static List<Project> all() {
 	        return createList(DatabaseAccess.executeQuery("select * from projects"));
 	    }
+	 public static List<Project> getCategory() {
+	        return createList(DatabaseAccess.executeQuery("SELECT * FROM `projects` GROUP BY category"));
+	    }
+	 
 
 	    public static Project get(int projectId) {
 	        return create(DatabaseAccess.executeQuery("select * from projects where projectId = "+projectId));
@@ -101,8 +105,11 @@ public class ProjectDAO {
 	        DatabaseAccess.executeUpdate("delete from Project where ProjectId = "+projectId);
 
 	    }
-	    public static  List<Project> findByCategory(String categoryId) {
-	        return createList(DatabaseAccess.executeQuery("select * from projects where Category = "+categoryId));
+//	    public static  List<Project> findByCategory(String category) {
+//	        return createList(DatabaseAccess.executeQuery("select * from projects where Category = "+category));
+//	    }
+	    public static List<Project> findByCategory(String category) {
+	        return createList(DatabaseAccess.executeQuery("select * from projects where Category ="+category));
 	    }
 	    
 	    public static  List<Project> findByLevel(String levelFilterId) {

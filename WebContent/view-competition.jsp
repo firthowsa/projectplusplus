@@ -17,6 +17,8 @@
     
     Competition competition = (Competition) request.getAttribute("competition");
     TeamMembers studentnumber = (TeamMembers) request.getAttribute("studentnumber");
+    TeamsCompetition teamsCompetition = (TeamsCompetition) request.getAttribute("count");
+
     List<TeamMembers> currentStudentTeamIds = (List<TeamMembers>) request.getAttribute("currentStudentTeamId");
     List<TeamsCompetition> currentStudentCompetitions = (List<TeamsCompetition>) request.getAttribute("currentStudentCompetition");
    Team competitionId = (Team) request.getAttribute("competitionId");
@@ -46,8 +48,9 @@
                 <%=request.getAttribute("error")%>
             </div>
             <%
-                }
+                }if(!(user instanceof Staff)){
             %>
+            
             
  <nav>
     <div class="nav-wrapper #fafafa grey lighten-5"">
@@ -70,19 +73,23 @@
                        %>
         
       <% 
-               if (competition.studentParticipating(s.getStudentNumber()) && competition.countTeamSummissions(s.getStudentNumber()) < 5) {
+               if (competition.studentParticipating(s.getStudentNumber()) && teamsCompetition.getCount() < 5) {
        %> 
                       <input name="competitionId" value="<%=competition.getCompetitionId()%>"hidden >
                        <input type="submit" name="SubmitSolution" class="btn-small #e65100 orange darken-4 " value="Submit Solution">
         <%
-                       		}
-        %> 
+                       		}else{
+                       			
+        %>                     
+                               <input type="text" name="" class="btn-small #e65100 green darken-4 " value="<%=teamsCompetition.getPoint()%> Points" disabled>
+        
+        <%} %>
          </form>   
          </li>
       </ul>
     </div>
   </nav>
-
+<%} %>
   
 
 

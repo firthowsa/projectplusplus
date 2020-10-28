@@ -47,9 +47,8 @@ public class Projects extends HttpServlet {
             try {
                 String category = request.getParameter("CategoryIdFilter");
                 request.setAttribute("projects", ProjectDAO.findByCategory(category));
-                System.out.println(ProjectDAO.findByCategory(category));
                
-                request.getRequestDispatcher("books.jsp").forward(request, response);
+                request.getRequestDispatcher("projects.jsp").forward(request, response);
             }catch (Exception e) {
                 response.sendRedirect("projects");
             }
@@ -59,6 +58,7 @@ public class Projects extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("project", ProjectDAO.all());
+        request.setAttribute("categories", ProjectDAO.getCategory());
         
         request.getRequestDispatcher("projects.jsp").forward(request, response);
     }

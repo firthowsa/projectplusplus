@@ -29,7 +29,9 @@ public class TeamsCompetitionDAO {
 	                                                                     
 	                        resultSet.getInt("competitionId"),
 	                        resultSet.getString("solution"),
-	                        resultSet.getInt("point")
+	                        resultSet.getInt("point"),
+	                        resultSet.getInt("teamsCompetitionId"),
+	                        resultSet.getInt("count")
 	                );
 	            }
 	        } catch (SQLException e) {
@@ -48,7 +50,9 @@ public class TeamsCompetitionDAO {
 	                                              
 	                        resultSet.getInt("competitionId"),
 	                        resultSet.getString("solution"),
-	                        resultSet.getInt("point")
+	                        resultSet.getInt("point"),
+	                        resultSet.getInt("teamsCompetitionId"),
+	                        resultSet.getInt("count")
 	                ));
 	            }
 	        } catch (SQLException e) {
@@ -90,32 +94,41 @@ public class TeamsCompetitionDAO {
 	        return create(DatabaseAccess.executeQuery("select * from TeamsCompetition where teamId = '"+teamId+"'"));
 	        
 	    }
+	    public static TeamsCompetition getAll(int teamId) {
+	        return create(DatabaseAccess.executeQuery("select * from TeamsCompetition where teamId = '"+teamId+"'"));
+	        
+	    }
 	    public static TeamsCompetition getparticipatingTeams(int competitionId) {
 	        return create(DatabaseAccess.executeQuery("select * from TeamsCompetition where competitionId = '"+competitionId+"'"));
 	        
 	    }
 	    public static void submitSolution(TeamsCompetition t) {
-	        String sql = "update TeamsCompetition set " +
-	                "solution = '"+t.getSolution()+"', " +
-	                
-	                
-	                " where competitionId = '"+t.getCompetitionId()+"'";
+	        String sql = "UPDATE `teamscompetition` SET `teamId`='"+t.getTeamId()+"',`competitionId`='"+t.getCompetitionId()+"',`solution`='"+t.getSolution()+"',`point`='"+t.getPoint()+"',`teamsCompetitionId`='"+t.getTeamsCompetitionId()+"',`count`='"+t.getCount()+"' WHERE teamId = "+t.getTeamId();
 	        DatabaseAccess.executeUpdate(sql);
 
+	    }
+	    
+	    public static void updateCompetition(Competition competition) {
+	        String sql ="update competition set Title ='"+competition.getTitle()+"', Category = '"+competition.getCategory()+"' ,Description = '"+competition.getDescription()+"',Rules = '"+competition.getRules()+"',Prize = '"+competition.getPrize()+"' ,Rules = '"+competition.getDeadline()+"' where competitionId ="+competition.getCompetitionId();
+	        DatabaseAccess.executeUpdate(sql);
 	    }
 	    public static void updatePoint(TeamsCompetition t) {
 	        String sql = "update TeamsCompetition set " +
 	                "solution = '"+t.getPoint()+"', " +
 	                
 	                
-	                " where competitionId = '"+t.getCompetitionId()+"'";
+	                " where teamId = '"+t.getTeamId()+"'";
 	        DatabaseAccess.executeUpdate(sql);
 
 	    }
 	    
 	    
 	    public static List<TeamsCompetition> all() {
-	        return createList(DatabaseAccess.executeQuery("select * from teamscompetition"));
+	        return createList(DatabaseAccess.executeQuery("select * from teamscompetition ORDER BY competitionId,point DESC"));
+	    }
+	    
+	    public static List<TeamsCompetition> allteamscompetition() {
+	        return createList(DatabaseAccess.executeQuery("SELECT competition.*,team.*,teamscompetition.* from competition INNER join teamscompetition on competition.competitionId=teamscompetition.competitionId INNER join team ON team.TeamId=teamscompetition.teamId"));
 	    }
 	    
 	    public static List<TeamsCompetition> getCompetitionId() {

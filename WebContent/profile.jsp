@@ -50,8 +50,7 @@
                     <p><label><%=student%></label></p>
                     <p><strong>Student Number</strong></p>
                     <p><label><%=student.getStudentNumber()%></label></p>
-                    <p><strong>Team</strong></p>
-                    <p><label><%=student.getTeamId()%></label></p>
+                    
 
                     <%
                         }

@@ -3,17 +3,39 @@ package models;
 public class TeamsCompetition {
 	
 	
-	 private int TeamId,CompetitionId,TeamsCompetitionId,Point;
+	 private int TeamId,CompetitionId,TeamsCompetitionId,Point,Count;
 	 private Student StudentNumber;
 	 private String Solution;
 	 
 	 public TeamsCompetition(
 			  int teamId,
-			  int competitionId
+			  String solution
 			
            
 ) { 
- 
+ 	 
+		 setTeamId(teamId);
+	    	setSolution(solution);
+
+}
+	 public TeamsCompetition(
+			  int teamsCompetitionId
+			
+          
+) { 
+	 
+		 setTeamsCompetitionId(teamsCompetitionId);
+	    
+
+}
+	 public TeamsCompetition(
+			  int teamId,
+			  int competitionId
+			  
+			
+          
+) { 
+
 		 TeamId=teamId;
 		 CompetitionId=competitionId;
 
@@ -22,7 +44,9 @@ public class TeamsCompetition {
 			  int teamId,
 			  int competitionId,
 			  String solution,
-			  int point
+			  int point,
+			  int teamsCompetitionId,
+			  int count
 			
           
 ) { 
@@ -31,6 +55,8 @@ public class TeamsCompetition {
 		 CompetitionId=competitionId;
 		 Solution=solution;
 		 Point=point;
+		 TeamsCompetitionId=teamsCompetitionId;
+		 Count=count;
 		 
 
 }
@@ -75,6 +101,12 @@ public class TeamsCompetition {
 	}
 	public void setSolution(String solution) {
 		Solution = solution;
+	}
+	public int getCount() {
+		return Count;
+	}
+	public void setCount(int count) {
+		this.Count = count;
 	}
 
 }

@@ -19,7 +19,7 @@
                 } else if (user instanceof Staff) {
                     Staff staff = (Staff) user;
             %>
-            <li><a href="staff.jsp">Home</a></li>
+            <li><a href="staff">Home</a></li>
             <li><a class='dropdown-trigger' href='#' data-target='manage-project'>Manage Projects<i class="material-icons right">arrow_drop_down</i></a></li>
            
 
@@ -50,7 +50,7 @@
             <ul id='manage-users' class='dropdown-content'>
                 <li><a href="register-staff"><i class="material-icons">add</i>Add staff</a></li>                
                 <li><a href="users"><i class="material-icons">visibility</i>View Staff</a></li>
-                <li><a href="students"><i class="material-icons">visibility</i>View Students</a></li>
+                <li><a href="ViewStudents"><i class="material-icons">visibility</i>View Students</a></li>
                 
             </ul>
             <%
@@ -81,7 +81,7 @@
             } else if (user instanceof Student) {
                     Student student = (Student) user;
             %>
-            <li><a href="student.jsp">Home</a></li>
+            <li><a href="students">Home</a></li>
              <li><a href="projects">Project</a></li>
               <li><a href="competitions">Competitions</a></li>
             
@@ -112,7 +112,7 @@
 <%--        Mobile--%>
         <ul id="nav-mobile" class="sidenav pink darken-4">
             <li>
-                <h1 class="p-2">LMS</h1>
+                <h1 class="p-2">ProjectPlus</h1>
             </li>
             <%
                 if (user == null) {
@@ -125,8 +125,8 @@
                 Staff staff = (Staff) user;
             %>
             <li><a href="staff">Home</a></li>
-            <li><a class='dropdown-trigger' href='#' data-target='manage-books1'>Manage books<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a href="receive-book">Receive Book</a></li>
+            <li><a class='dropdown-trigger' href='#' data-target='manage-books1'>Manage projects<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="receive-book">Receive Competition</a></li>
             <li>
                 <a href="#" class="dropdown-trigger" data-target="profile-dropdown1">
                     <i class="valign-wrapper">

@@ -19,6 +19,7 @@
         response.sendRedirect("index.jsp");
         return;
     }
+    @SuppressWarnings("unchecked")
     List<Student> students = (List<Student>) request.getAttribute("students");
     
 
@@ -43,7 +44,8 @@
             <tr>
                 <th>Student Number</th>
                 <th>Name</th>                
-                <th>Team</th>
+                <th>phone</th>
+                 <th>Email</th>
             </tr>
             </thead>
 
@@ -54,8 +56,9 @@
             <tr class="student-row">
                 <td><%=student.getStudentNumber()%></td>
                 <td class="student-name"><%=student%></td>
+                <td><%=student.getPhone() %></td>
+                 <td><%=student.getEmail() %></td>
                 
-                <td><%=student.getTeamId()%></td>
             </tr>
             <%
                 }

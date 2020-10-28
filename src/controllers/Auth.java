@@ -3,7 +3,7 @@ package controllers;
 
 import dao.StaffDAO;
 import dao.StudentDAO;
-
+import dao.TeamsCompetitionDAO;
 import models.Staff;
 import models.Student;
 
@@ -32,8 +32,9 @@ public class Auth extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }else {
                     request.getSession().setAttribute("user", staff);
-                    response.sendRedirect("staff.jsp");
-                }
+                    request.setAttribute("teamscompetition", TeamsCompetitionDAO.all());
+
+                    request.getRequestDispatcher("staff.jsp").forward(request, response);                }
             }else if (request.getParameter("StudentNumber") != null) {
                 String studentNumber = request.getParameter("StudentNumber");
                 Student student = StudentDAO.login(studentNumber, password);
@@ -42,7 +43,10 @@ public class Auth extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }else {
                     request.getSession().setAttribute("user", student);
-                    response.sendRedirect("student.jsp");
+                    request.setAttribute("teamscompetition", TeamsCompetitionDAO.all());
+                    //System.out.println(TeamsCompetitionDAO.all());
+                    request.getRequestDispatcher("student.jsp").forward(request, response);
+                    //response.sendRedirect("student.jsp");
                 }
 
             }else {

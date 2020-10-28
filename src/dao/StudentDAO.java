@@ -125,7 +125,9 @@ public class StudentDAO {
 //        return create(DatabaseAccess.executeQuery("select s.StudentNumber, tm.TeamId, tc.CompetitionId from student s inner join teammembers tm on s.StudentNumber = tm.StudentNumber inner join teamscompetition tc on tm.TeamId = tc.TeamId"));
 //    }
 
-
+    public static List<Student> getStudentsInSameTeam(int teamId) {
+        return createList(DatabaseAccess.executeQuery("SELECT student.* from student INNER JOIN teammembers on student.StudentNumber=teammembers.StudentNumber WHERE teammembers.teamId = "+teamId));
+    }
     public static List<Student> findByCampus(int campusNo) {
         return createList(DatabaseAccess.executeQuery("select * from Student where CampusNo = "+campusNo));
     }

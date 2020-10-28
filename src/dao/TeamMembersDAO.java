@@ -92,11 +92,13 @@ public class TeamMembersDAO {
 	        
 	    }
 	    
-//	    public static TeamMembers getTeamId(String studentNumber) {
-//	        return create(DatabaseAccess.executeQuery("select teamId from teammembers where studentNumber = '"+studentNumber+"'"));
-//	        
-//	    }
-//	    
+	    public static TeamMembers getTeamIdforSubmittingSolution(int competitionId,String studentNumber ) {
+	        return create(DatabaseAccess.executeQuery("SELECT teammembers.* from teammembers INNER JOIN teamscompetition on teamscompetition.teamId=teammembers.teamId INNER JOIN student on "
+	        		+ "student.StudentNumber=teammembers.StudentNumber where"
+	        		+ " teamscompetition.competitionId='"+competitionId+"' AND teammembers.StudentNumber ='"+studentNumber+"'"));
+	        
+	    }
+	    
 	    
 	    
 	    public static List<TeamMembers> all() {

@@ -19,6 +19,7 @@
         <div class="row">
             <%
             Competition competition = (Competition) request.getAttribute("competition");
+            TeamMembers teammebers = (TeamMembers) request.getAttribute("teamid");
                 if(request.getAttribute("message") != null) {
             %>
             <div class="s12 alert green darken-1 center">
@@ -34,8 +35,9 @@
             <%
                 }
             %>
-                     <input type="text" value="<%=competition.getCompetitionId()%>" class="validate" required name="CompetitionId" id="CompetitionId" >
-               
+                     <input type="text" value="<%=competition.getCompetitionId()%>" class="validate" required name="CompetitionId" id="CompetitionId" hidden>
+                     <input type="text" value="<%=teammebers.getTeamId() %>" class="validate" required name="teamid" id="CompetitionId" hidden>
+                    
             <div class="col s12 m6 l6 input-field">
                 <input type="text" class="validate" required name="Solution" id="Solution">
                 <label for="Solution">Enter the Link To Your github repository</label>

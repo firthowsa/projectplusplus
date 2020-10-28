@@ -12,8 +12,10 @@
 //        response.sendRedirect("index.jsp");
 //        return;
 //    }
+   @SuppressWarnings("unchecked")
     List<Project> projects = (List<Project>) request.getAttribute("project");
-   
+   @SuppressWarnings("unchecked")
+    List<Project> categories = (List<Project>) request.getAttribute("categories");
     if (projects == null ) {
         response.sendRedirect("projects");
         return;
@@ -29,28 +31,25 @@
             <form action="projects" method="post">
                 <select name="LevelFilterId" id="LevelFilterId">
                     <option value="" disabled selected>Select Level</option>
-                    <%
-                        for (Project project: projects) {
-                    %>
-                    <option value="<%=project.getLevel()%>"><%=project.getLevel()%></option>
-                    <%
-                        }
-                    %>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                    
                     
                 </select>
                 <label>Filter by  Level</label>
+                
                 <input type="submit" name="LevelFilter" hidden id="LevelFilter">
             </form>
         </div>
         <div class="input-field col l4 s12 m4">
             <form action="projects" method="post">
-                <select name="CategoryIdFilter" id="CategoryIdFilter">
+                <select  name="CategoryIdFilter" id="CategoryIdFilter">
                     <option value="" disabled selected>Select category</option>
+                      <%for(Project category:categories){ %>
+                    <option value="<%=category.getCategory()%>"><%=category.getCategory()%></option>
                     
-                    <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
-                    <option value="Android Development">Android Development</option>
-                    <option value="Web Development">Web Development</option>
-                    
+                    <%} %>
                 </select>
                 <label>Filter by  category</label>
                 <input type="submit" name="CategoryFilter" hidden id="CategoryFilter">
@@ -62,16 +61,16 @@
             </form>
         </div>
     </div>
-    <div>
+   
         
             <%
                 for (Project project : projects) {
             %>
               <%   if (user instanceof Staff) {
                 %>
-                
+             
        <div class="col s12 m7">
-              <h3 class="header"><%=project.getTitle()%></h3>
+              <h3 class="header" class="student-name"><%=project.getTitle()%></h3>
          <div class="card horizontal">
            <div class="card-image">
               <img src="https://lorempixel.com/100/190/nature/6">
@@ -99,8 +98,8 @@
                         <img src="https://lorempixel.com/100/190/nature/6">
                       </div>
                   <div class="card-stacked">
-                   <div class="card-content">
-                        <p id="p"><%=project.getDescription()%></p>
+                   <div class="card-content" class="truncate">
+                        <p><%=project.getDescription()%></p>
                     </div>
                   <div class="card-action">
                            <form action="projects" method="post">
@@ -122,7 +121,7 @@
     </div>
     </div>
    
-</div>
+
 </div>
 </div>
 </body>
@@ -173,5 +172,6 @@ document.querySelector('p').innerText = truncateText('p', 500);
     })
     
 </script>
+
 
 </html>
